@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+  <executable name="dist/default/production/SerialusM2MDevlinuxcopy_3_42_pm_28_09_.X.production.elf">
+    <memory name="data">
+      <units>bytes</units>
+      <length>16384</length>
+      <used>2776</used>
+      <free>13608</free>
+    </memory>
+    <memory name="program">
+      <units>bytes</units>
+      <length>131328</length>
+      <used>87051</used>
+      <free>44277</free>
+    </memory>
+  </executable>
+</project>

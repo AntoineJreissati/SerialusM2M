@@ -1,0 +1,18 @@
+#
+# Generated - do not edit!
+#
+# NOCDDL
+#
+CND_BASEDIR=`pwd`
+# default configuration
+CND_ARTIFACT_DIR_default=dist/default/production
+CND_ARTIFACT_NAME_default=SerialusM2MDevlinuxcopy_3_42_pm_28_09_.X.production.hex
+CND_ARTIFACT_PATH_default=dist/default/production/SerialusM2MDevlinuxcopy_3_42_pm_28_09_.X.production.hex
+# Copy-3_of_default configuration
+CND_ARTIFACT_DIR_Copy-3_of_default=dist/Copy-3_of_default/production
+CND_ARTIFACT_NAME_Copy-3_of_default=SerialusM2MDevlinuxcopy_3_42_pm_28_09_.X.production.hex
+CND_ARTIFACT_PATH_Copy-3_of_default=dist/Copy-3_of_default/production/SerialusM2MDevlinuxcopy_3_42_pm_28_09_.X.production.hex
+# NewConfiguration configuration
+CND_ARTIFACT_DIR_NewConfiguration=dist/NewConfiguration/production
+CND_ARTIFACT_NAME_NewConfiguration=SerialusM2MDevlinuxcopy_3_42_pm_28_09_.X.production.null
+CND_ARTIFACT_PATH_NewConfiguration=dist/NewConfiguration/production/SerialusM2MDevlinuxcopy_3_42_pm_28_09_.X.production.null
