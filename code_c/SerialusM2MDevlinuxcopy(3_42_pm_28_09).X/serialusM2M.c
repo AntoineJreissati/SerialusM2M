@@ -135,7 +135,7 @@ void serialusM2M_process()
                         calageY();
                         break;
                     case '2': // ca All
-                        if ((taille_buffer) != 11)
+                        if ((taille_buffer) != 4)
                         {
                             printf("erreur taille chat %d \n", taille_buffer);
                             break;
@@ -964,6 +964,26 @@ void serialusM2M_process()
                             break;
                     }
                     break;
+                    case '5':
+                        //printf("you are here \n");
+                         id1 = serialusM2M.buffer[1];
+                        switch (id1)
+                        { case '0':
+                            printf("you are here \n");
+                            break;
+                            
+                            default  :
+                                printf ("Mauvais id1 capteur /n");
+                                break;
+                                }
+                                
+                                      
+                                
+                        
+                        break; //break case 5 
+                    
+                               
+                            
                 default:
                     printf("connais pas \n");
                     break;
@@ -999,31 +1019,8 @@ void calageY()
 }
 void calageALL()
 {
-    double d = 0.0;
-    double v = 0.0;
-
-    char chard[5];
-    char charv[4];
-
-    // Extract x, y, and theta substrings from the buffer
-    strncpy(chard, serialusM2M.buffer + 3, 4);
-    strncpy(charv, serialusM2M.buffer + 7, 3);
-
-    // Null-terminate the substrings
-    chard[4] = '\0';
-    charv[3] = '\0';
-    // Convert the substrings to double
-    d = (double)atof(chard);
-    v = (double)atof(charv);
-    if (d > 3000 || abs(v) < 0 || abs(v) > 150)
-    {
-        printf("data inchoerante d : %f, v : %f\n ", (float)d, (float)v);
-    }
-    else
-    {
-        calage(d, v);
-        printf("calage all d : %f, v : %f\n", (float)d, (float)v);
-    }
+    calage_depart();
+    print_pos();
     // print_pos();
 }
 void reset_overflow_error()
@@ -1213,6 +1210,11 @@ void rej()
     y = (double)atof(charY);
     v = (double)atof(charV);
     s = (int8_t)atoi(charS);
+    
+    if (s==0){
+        s=-1; 
+    }
+                  
 
     if (abs(x) > 3000 || abs(y) > 2000 || abs(v) > 200 || abs(s) != 1)
     {
@@ -1885,17 +1887,16 @@ void calcul_var_odom_asserv()
 }
 
 void DEBUG_ON(){
-#ifndef DEBUG_ACTIF
     #define DEBUG_ACTIF
-#endif
-    printf("Debug ON\n");
+
+    //printf("Debug ON\n");
 }
 
 void DEBUG_OFF(){
-#ifdef DEBUG_ACTIF 
-    #undef DEBUG_ACTIF
-#endif
-  printf("Debug OFF\n");
+
+    #define DEBUG_ACTIF
+
+  //printf("Debug OFF\n");
 }
 
 
@@ -2071,7 +2072,9 @@ void AX_get_pos(){
     strncpy(charID, serialusM2M.buffer + 3, 2);
 
     id = (int16_t) atoi(charID);
-
+    
+    print_position_ax12(id, read_data(id, LIRE_POSITION_ACTU));
+     
     id = check_id_ax12_m2m(id);
     if (id == TOUS_LES_AX12)
     {
@@ -2086,7 +2089,7 @@ void AX_get_pos(){
         }
 
         
-            printf("\r");
+            //printf("\r");
             for (id = 0 ; id < index ; id++)
             {
                 print_position_ax12(tab[id], read_data(tab[id], LIRE_POSITION_ACTU));
@@ -2094,7 +2097,7 @@ void AX_get_pos(){
             printf("\n");
         
     }
-    else if (id != -1)
+    else
     {
         if (Ping(id) == REPONSE_OK)
         {
@@ -2172,7 +2175,7 @@ void print_erreur_ax12()
 
 void print_position_ax12(uint8_t id, int16_t position)
 {
-    printf(" ID : %d = %d \r", id, position);
+    printf(" ID : %d =%d \r", id, position);
 }
 
 void print_ping(uint8_t id)
