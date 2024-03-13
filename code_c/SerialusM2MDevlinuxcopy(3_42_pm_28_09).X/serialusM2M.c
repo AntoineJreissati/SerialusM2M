@@ -84,7 +84,7 @@ void serialusM2M_process()
                         print_pos();
                         break;
                     case '1': // set rob
-                        if ((taille_buffer) != 16)
+                        if ((taille_buffer) != 15)
                         {
                             printf("erreur taille char %d \n", taille_buffer);
                             break;
@@ -1036,17 +1036,17 @@ void InitPosM2M()
 
     char charX[5];
     char charY[5];
-    char charTheta[5];
+    char charTheta[4];
 
     // Extract x, y, and theta substrings from the buffer
     strncpy(charX, serialusM2M.buffer + 3, 4);
     strncpy(charY, serialusM2M.buffer + 7, 4);
-    strncpy(charTheta, serialusM2M.buffer + 11, 4);
+    strncpy(charTheta, serialusM2M.buffer + 11, 3);
 
     // Null-terminate the substrings
     charX[4] = '\0';
     charY[4] = '\0';
-    charTheta[4] = '\0';
+    charTheta[3] = '\0';
     // Convert the substrings to double
     x = (double)atof(charX);
     y = (double)atof(charY);
@@ -1080,6 +1080,11 @@ void ori()
     // Convert the substrings to double
     a = (double)atof(chara);
     v = (double)atof(charv);
+    if (a<0)
+    {
+        a=(a-180)*(-1);
+    }
+    else{
     if (abs(a) > 180 || abs(v) > 200)
     {
         printf("data inchoerante a : %f, v : %f\n ", (float)a, (float)v);
@@ -1088,6 +1093,7 @@ void ori()
     {
         init_clignotement();
         print_erreur_deplacementM2M(_orienter(a, v));
+    }
     }
 }
 
