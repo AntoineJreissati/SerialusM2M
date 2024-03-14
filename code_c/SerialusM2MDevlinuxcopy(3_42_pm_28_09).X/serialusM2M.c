@@ -1091,7 +1091,8 @@ void ori()
     }
     else
     {
-        init_clignotement();
+        printf("0\n");
+        //init_clignotement();
         print_erreur_deplacementM2M(_orienter(a, v));
     }
     }
@@ -1126,7 +1127,8 @@ void cib()
     }
     else
     {
-        init_clignotement();
+        printf("0\n");
+        //init_clignotement();
         print_erreur_deplacementM2M(_cibler(x, y, v));
     }
 }
@@ -1155,7 +1157,8 @@ void av()
     }
     else
     {
-        init_clignotement();
+        printf("0\n");
+        //init_clignotement();
         print_erreur_deplacementM2M(_avancer_reculer(d, v));
     }
 }
@@ -1184,7 +1187,8 @@ void rec()
     }
     else
     {
-        init_clignotement();
+        printf("0\n");
+        //init_clignotement();
         print_erreur_deplacementM2M(_avancer_reculer(-d, v));
     }
 }
@@ -1228,7 +1232,8 @@ void rej()
     }
     else
     {
-        init_clignotement();
+        printf("0\n");
+        //init_clignotement();
         print_erreur_deplacementM2M(_rejoindre(x, y, s, v));
     }
 }
@@ -1290,7 +1295,8 @@ void passe_par()
     }
     else
     {
-        init_clignotement();
+        printf("0\n");
+        //init_clignotement();
         print_erreur_deplacementM2M(_passe_part(x, y, s, v, last));
     }
 }
@@ -1858,10 +1864,10 @@ void print_erreur_deplacementM2M(_enum_erreur_asserv erreur)
         printf("1\n");
         break;
     case BLOCAGE:
-        printf("2\n");
+        //printf("2\n");
         break;
     case DEPLACEMENT_NORMAL:
-        print_pos();
+        //print_pos();
         break;
     }
 }
