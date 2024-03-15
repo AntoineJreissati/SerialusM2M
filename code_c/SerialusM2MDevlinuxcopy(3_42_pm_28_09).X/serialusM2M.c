@@ -1084,7 +1084,7 @@ void ori()
     {
         a=(a-180)*(-1);
     }
-    else{
+    
     if (abs(a) > 180 || abs(v) > 200)
     {
         printf("data inchoerante a : %f, v : %f\n ", (float)a, (float)v);
@@ -1095,7 +1095,7 @@ void ori()
         //init_clignotement();
         print_erreur_deplacementM2M(_orienter(a, v));
     }
-    }
+    
 }
 
 void cib()
